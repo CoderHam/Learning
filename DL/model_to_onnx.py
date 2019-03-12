@@ -6,15 +6,15 @@ import onnx
 
 def torch_to_onnx(model_path=None, weights_path=None, model_state_dict=None, dummy_input=None, onnx_model_name="onnx_model_name"):
     # Load the model and weights from a file (.pt or .pth)
-    model = torch.load(model_path).cuda()
+    model = torch.load(model_path)
     # # export to onnx
     torch.onnx.export(model, dummy_input, onnx_model_name+".onnx", verbose=False)
     del model
 
 def test_torch(caffe_backend_test=False):
-    model = models.alexnet(pretrained=True).cuda()
+    model = models.alexnet(pretrained=True)
     # Create the right input shape (e.g. for an image)
-    dummy_input = torch.randn(10, 3, 224, 224, device="cuda")
+    dummy_input = torch.randn(10, 3, 224, 224)
     # save model and weights in .pth file
     torch.save(model, "alexnet.pth")
     del model
@@ -37,7 +37,8 @@ def test_torch(caffe_backend_test=False):
         s = time.time()
         inputs = np.random.randn(10, 3, 224, 224).astype(np.float32)
         outputs = model_backend.run(inputs)
-        print("Time taken: ", time.time()-s,"\n",outputs[0])
+        print("Time taken: ", time.time()-s)
+        print(outputs[0])
 
 
 if __name__ == "__main__":
