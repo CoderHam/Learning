@@ -1,2 +1,6 @@
 *.pth
 *.onnx
+ssd_mobilenet_v1_coco_2017_11_17/
+checkpoints/
+saved_model.pb
+tf_onnx.py
