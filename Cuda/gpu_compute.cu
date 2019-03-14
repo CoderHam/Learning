@@ -119,7 +119,7 @@ int main(int argc, char* argv[]){
   unsigned char *h_greyImage, *d_greyImage;
 
   string input_file = argv[1];
-  string output_file = argv[2];
+  string output_file = "op_c.jpg";
   preProcess(&h_rgbaImage, &h_greyImage, &d_rgbaImage, &d_greyImage, input_file);
 
   cudaEvent_t start, stop;
@@ -137,6 +137,8 @@ int main(int argc, char* argv[]){
   postProcess(output_file);
 	return 0;
 }
+// Sample output:
+// Runtime (in ms) : 0.033344
 
 // nvcc `pkg-config --cflags --libs opencv` -o gpu_compute.o gpu_compute.cu
-// ./gpu_compute.o cinque_terre_small.jpg op.jpg
+// ./gpu_compute.o cinque_terre_small.jpg
