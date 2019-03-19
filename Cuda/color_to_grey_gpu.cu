@@ -140,5 +140,5 @@ int main(int argc, char* argv[]){
 // Sample output:
 // Runtime (in ms) : 0.033344
 
-// nvcc `pkg-config --cflags --libs opencv` -o gpu_compute.o gpu_compute.cu
-// ./gpu_compute.o cinque_terre_small.jpg
+// nvcc `pkg-config --cflags --libs opencv` -o color_to_grey_gpu.o color_to_grey_gpu.cu
+// ./color_to_grey_gpu.o cinque_terre_small.jpg
